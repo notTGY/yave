@@ -1,0 +1,3 @@
+M=[[0,0,7],[1,1,3],[1,0,3],[1,-1,3],[-1,0,2],[0,2,3],[-1,1,3],[-1,-1,3],[0,-1,3],[2,0,6],[2,0,5],[2,0,4],[2,0,3],[2,0,2],[2,0,1],[2,0,0],]
+
+X=Y=Z=A=B=K=0;with(Math)S=sin,C=cos,F=e=>2*asin(1-e/250),R=(e,i,k)=>e*e<.25&&i*i<.25&&k*k<.25&&c.getContext`2d`.fillRect(N%40,N/40,.8/D,1);G=e=>new Date().getTime();(U=e=>{E=G();c.width=c.height=40;for(N=1600;N--;M.map(O=>{for(D=1;D<7;D+=.2)I=(N%40)/20-1,J=N/800-1,R(O[0]-X-(I*C(A)+S(A)*C(B)+J*S(A)*S(B))*D,O[1]-Y-(J*C(B)-S(B))*D,O[2]-Z-(C(A)*(C(B)+J*S(B))-I*S(A))*D)}))T=(G()-E)/400;if(K--)K=A+Math.PI*K/2,Z+=T*C(K),X+=T*S(K);setTimeout(U,K=0)})(onmousemove=e=>{A=-2.5*F(e.x);B=F(e.y)});onkeydown=e=>K={w:1,s:3,a:4,d:2}[e.key]
