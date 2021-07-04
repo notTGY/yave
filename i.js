@@ -1,3 +1,41 @@
-M=[[0,0,7],[1,1,3],[1,0,3],[1,-1,3],[-1,0,2],[0,2,3],[-1,1,3],[-1,-1,3],[0,-1,3],[2,0,6],[2,0,5],[2,0,4],[2,0,3],[2,0,2],[2,0,1],[2,0,0],]
+M=[]
+with(Math){for(a=I=255;I--;)for(J=a;J--;M.push([I,0,J]))if(random()>.7)M.push([I,1,J]);S=sin;C=cos;F=e=>2*asin(1-e/125)}
+x=c.getContext`2d`
 
-X=Y=Z=A=B=K=0;with(Math)S=sin,C=cos,F=e=>2*asin(1-e/250),R=(e,i,k)=>e*e<.25&&i*i<.25&&k*k<.25&&c.getContext`2d`.fillRect(N%40,N/40,.8/D,1);G=e=>new Date().getTime();(U=e=>{E=G();c.width=c.height=40;for(N=1600;N--;M.map(O=>{for(D=1;D<7;D+=.2)I=(N%40)/20-1,J=N/800-1,R(O[0]-X-(I*C(A)+S(A)*C(B)+J*S(A)*S(B))*D,O[1]-Y-(J*C(B)-S(B))*D,O[2]-Z-(C(A)*(C(B)+J*S(B))-I*S(A))*D)}))T=(G()-E)/400;if(K--)K=A+Math.PI*K/2,Z+=T*C(K),X+=T*S(K);setTimeout(U,K=0)})(onmousemove=e=>{A=-2.5*F(e.x);B=F(e.y)});onkeydown=e=>K={w:1,s:3,a:4,d:2}[e.key]
+P=x.createImageData(c.width=c.height=X=Z=H=80,H)
+Q=P.data
+for(b=N=H*H;N--;Y=3)Q[N*4+3]=a
+
+G=e=>new Date().getTime();
+(onmousemove=e=>{CA=C(A=-2.5*F(e.x));SA=S(A);CB=C(B=F(e.y));SB=S(B)})({x:L=0,y:0});
+(U=e=>{
+  E=G()
+  V=M.filter(([I,J,e])=>(rx=I-X)**2+(ry=J-Y)**2+(rz=e-Z)**2<60&&(t = rx*(cx=SA*CB) + ry*SB + rz*(cz=CA*CB))>1&&(rx-t*cx)**2+(ry-t*SB)**2+(rz - t*cz)**2<4*t*t)
+
+  for(N=b;N--;Q[N*4]=Q[N*4+1]=Q[N*4+2]=K){
+    d = 2*(N%H)/H-1
+    f = 2*N/b-1
+
+    T = CB + f*SB
+
+    dx = d*CA + SA*T 
+    dz = CA*T - d*SA 
+    dy = SB - f*CB
+
+    W = V.filter(([I,J,e])=>((rx=I-X) - (B = rx*dx + (ry=J-Y)*dy + (rz=e-Z)*dz)*dx)**2 + (ry - B*dy)**2 + (rz - B*dz)**2 < 2*B*B)
+
+    K=a
+    for(D=1;D<9;D+=.2)
+      W.map(O => ((I,J,e)=>I<.5&&J<.5&&e<.5&&I>-.5&&J>-.5&&e>-.5&&(K=20*++D|0)&&(D=9))(
+          O[0]-X - dx*D,
+          O[1]-Y - dy*D,
+          O[2]-Z - dz*D
+        )
+      )
+  }
+
+  x.putImageData(P,0,0)
+
+  if(L--){T=(G()-E)/a;Z+=T*C(L=A+1.6*L);X+=T*S(L)}
+  setTimeout(U,L=0)
+})(onkeydown=e=>L={w:1,s:3,a:4,d:2}[e.key])
