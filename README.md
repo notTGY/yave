@@ -1,5 +1,7 @@
 # yave Yet Another Voxel Engine
 
+![demo](https://raw.githubusercontent.com/notTGY/yave/main/animation.gif "demo")
+
 ## What it does?
 Yave renders 3d objects using raymarching + some clever clipping. It doesn't handle movement of camera or objects, however you will find insides on how to do this in the demo.
 
