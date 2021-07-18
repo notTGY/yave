@@ -9,6 +9,7 @@ Secondly you connect the Yave script.
 Thirdly initialize the engine and start render process by calling `U()`
 To initialize engine you must provide:
 - map
+
 You can provide:
 - `BEFORE` and `AFTER` functions which will be called before and after each render
 - starting position of the camera in `X`, `Y` and `Z`
@@ -30,5 +31,5 @@ You simply fill map like this: `M=[ [3, 2, 1] ]`
 
 By the way, you can make cubes corolful by adding 4th property of color and coloring pixel according to it
 
-##Pro tip
+## Pro tip
 source code is avaliable with comments in both demo files and `index.js`, there is also `golfed.htm` file in demo directory to prove that yave is simple and small for real (1kb demo).
