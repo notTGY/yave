@@ -161,7 +161,8 @@ U=e=>{
       W.map(O => R(
           O[0]-X - dx*D,
           O[1]-Y - dy*D,
-          O[2]-Z - dz*D
+          O[2]-Z - dz*D,
+          O
         )
       )
 
